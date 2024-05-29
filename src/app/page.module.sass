@@ -63,6 +63,20 @@
   background-color: $teal
   margin: 0 5px
 
+.back_btn
+  display: flex
+  justify-content: center
+  align-items: center
+  position: absolute
+  left: 0
+  top: 0
+  padding: 14px
+  background: transparent
+  cursor: pointer
+  border: none
+  &:hover
+    filter: opacity(0.5)
+
 .close_btn
   display: flex
   justify-content: center
@@ -130,8 +144,6 @@
     &:hover
       filter: none
 
-// Auth Body      
-
 // @media (prefers-color-scheme: dark) 
 
 @media (max-height: 700px)
@@ -147,6 +159,7 @@
     .row
       flex-direction: column
     .br_2
+      min-height: calc(50vw - 32px)
       border: none
     .auth_image
       max-width: 500px

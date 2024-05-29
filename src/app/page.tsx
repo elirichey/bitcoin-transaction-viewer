@@ -4,23 +4,54 @@ import Image from "next/image";
 import { isEmail } from "validator";
 import "./globals.sass";
 import styles from "./page.module.sass";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Titlebar from "@/components/titlebar/Titlebar";
 import Input from "@/components/input/Input";
+import Countdown from "@/components/countdown/Countdown";
 
 export default function Home() {
   const [showAuthForm, setShowAuthForm] = useState<boolean>(true);
 
   const [currentStep, setCurrentStep] = useState<number>(0);
-  const [email, setEmail] = useState<string>("");
+  const [timeout, setTimeout] = useState<number>(30);
 
+  const [email, setEmail] = useState<string>("");
   const emailComplete = isEmail(email) && email.trim().length > 0;
+
+  useEffect(() => {
+    if (currentStep === 1) {
+      if (timeout !== 0) {
+        window.setTimeout(() => setTimeout(timeout - 1), 1000);
+      }
+    }
+  }, [currentStep, timeout]);
+
+  const resendVerification = () => {
+    setTimeout(30);
+  };
 
   return (
     <main>
       {showAuthForm ? (
         <section id="auth-container" className={styles.auth_container}>
           <div id="auth-stepper" className={styles.stepper_container}>
+            {currentStep === 0 ? (
+              <></>
+            ) : (
+              <button
+                className={styles.back_btn}
+                onClick={() => setCurrentStep(0)}
+              >
+                <Image
+                  src="/svg/left.svg"
+                  alt="Back"
+                  width={15}
+                  height={15}
+                  priority
+                />
+              </button>
+            )}
+
             <div className={styles.stepper}>
               <div className={styles.stepper_item_complete}></div>
               <div className={styles.stepper_hr}></div>
@@ -54,51 +85,67 @@ export default function Home() {
           <div id="auth-body" className={styles.row}>
             <div className={styles.br_2}>
               {currentStep === 0 ? (
-                <>
-                  <div className="flex1 column mx-24 my-26">
-                    <p className={styles.auth_intro}>
-                      Enter your Anchorwatch registered email
-                    </p>
+                <div className="flex1 column mx-24 my-26">
+                  <p className={styles.auth_intro}>
+                    Enter your Anchorwatch registered email
+                  </p>
 
-                    <Input
-                      name="email"
-                      label="EMAIL"
-                      value={email}
-                      onChange={(e: string) => setEmail(e)}
-                      type="email"
-                      placeholder="Email"
-                      isComplete={emailComplete}
-                      error={
-                        email.trim() !== "" && !emailComplete
-                          ? "Please enter a valid email address"
-                          : null
-                      }
-                    />
+                  <Input
+                    name="email"
+                    label="EMAIL"
+                    value={email}
+                    onChange={(e: string) => setEmail(e)}
+                    type="email"
+                    placeholder="Email"
+                    isComplete={emailComplete}
+                    error={
+                      email.trim() !== "" && !emailComplete
+                        ? "Please enter a valid email address"
+                        : null
+                    }
+                  />
 
-                    <div className={styles.auth_actions}>
-                      <a href="#" className={styles.auth_help}>
-                        Need Help?
-                        <Image
-                          src="/svg/share.svg"
-                          alt="Help Icon"
-                          width={16}
-                          height={16}
-                          priority
-                        />
-                      </a>
+                  <div className={styles.auth_actions}>
+                    <a href="#" className={styles.auth_help}>
+                      Need Help?
+                      <Image
+                        src="/svg/share.svg"
+                        alt="Help Icon"
+                        width={16}
+                        height={16}
+                        priority
+                      />
+                    </a>
 
-                      <button
-                        className={styles.auth_btn}
-                        onClick={() => setCurrentStep(1)}
-                        disabled={!emailComplete}
-                      >
-                        Next
-                      </button>
-                    </div>
+                    <button
+                      className={styles.auth_btn}
+                      onClick={() => setCurrentStep(1)}
+                      disabled={!emailComplete}
+                    >
+                      Next
+                    </button>
                   </div>
-                </>
+                </div>
               ) : (
-                <></>
+                <div className="flex1 column mx-24 my-26">
+                  <p className={styles.auth_intro}>
+                    Check your inbox for a sign in link, which is valid for 10
+                    minutes. If you didn't receive it within 30 seconds, please
+                    resend to receive another link.
+                  </p>
+
+                  <div className={styles.auth_final_actions}>
+                    <button
+                      className={styles.auth_btn}
+                      onClick={() => resendVerification()}
+                      disabled={timeout !== 0}
+                    >
+                      Resend
+                    </button>
+
+                    {timeout === 0 ? <></> : <Countdown timeout={timeout} />}
+                  </div>
+                </div>
               )}
             </div>
 
