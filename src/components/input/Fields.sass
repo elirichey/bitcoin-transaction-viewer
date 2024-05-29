@@ -1,0 +1,41 @@
+@import '../../styles/variables'
+
+@-webkit-keyframes autofill
+  color: inherit
+  background: transparent
+
+input, textarea, select, button
+  &:-webkit-autofill
+    -webkit-box-shadow: 0 0 0 50px $white inset
+    -webkit-text-fill-color: #333
+  &:-webkit-autofill:focus
+    -webkit-box-shadow: 0 0 0 50px $white inset
+    -webkit-text-fill-color: #333
+
+.input-label
+  font-size: 18px
+  line-height: 21.6px
+  margin-bottom: 12px
+
+.input
+  background-color: $lt_gray
+  // font-family: 'DM Sans'
+  font-size: 18px
+  line-height: 21.6px
+  padding: 12px 14px
+  border: 2px solid transparent
+  border-radius: 4px
+  &:focus-visible
+    border: 2px solid $border
+  &::placeholder
+    opacity: 0.5
+  &.input-complete
+    border: 1px solid $black
+  &.input-error
+    border: solid 2px $red
+.input-error-msg
+  color: $red
+  line-height: 19.2px
+  font-size: 16px
+  // font-family DM Sans Regular
+  margin-top: 4px
