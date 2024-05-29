@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-//import "../styles/globals.module.sass";
+import { DM_Mono, DM_Sans } from "next/font/google";
 import "./globals.sass";
 
-const inter = Inter({ subsets: ["latin"] });
+const DMMono = DM_Mono({
+  variable: "--font-dm-mono",
+  subsets: ["latin-ext"],
+  weight: "500",
+  display: "swap",
+});
+
+const DMSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin-ext"],
+  weight: "500",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${DMMono.variable} ${DMSans.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
