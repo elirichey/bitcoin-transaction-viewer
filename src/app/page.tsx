@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useContext } from "react";
 import { isEmail } from "validator";
+import { signIn } from "next-auth/react";
+import { Magic } from "magic-sdk";
 import "./globals.sass";
 import styles from "./page.module.sass";
 import { useEffect, useState } from "react";
@@ -11,9 +13,11 @@ import Input from "@/components/input/Input";
 import Countdown from "@/components/countdown/Countdown";
 import { UserContext } from "@/context/UserContext";
 import { magic } from "@/libs/magic";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
   const [user, setUser] = useContext(UserContext);
   const [showAuthForm, setShowAuthForm] = useState<boolean>(true);
 
@@ -37,10 +41,14 @@ export default function Home() {
       setCurrentStep(1);
     }
 
+    if (!magic) throw new Error(`magic not defined`);
+
     try {
       const didToken: any = await magic.auth.loginWithEmailOTP({
         email,
       });
+
+      console.log({ didToken });
 
       const res = await fetch("/api/login", {
         method: "POST",
@@ -54,7 +62,7 @@ export default function Home() {
         const userMetadata = await magic.user.getMetadata();
         console.log({ userMetadata });
         setUser(userMetadata);
-        redirect("/dashboard");
+        router.replace("/dashboard");
       } else {
         console.error({ responseError: res });
       }
@@ -64,7 +72,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    user?.issuer && redirect("/dashboard");
+    user?.issuer ? router.replace("/dashboard") : null;
   }, [user]);
 
   const resendVerification = () => {

@@ -46,7 +46,7 @@ export default function Input(props: Props) {
           placeholder={placeholder}
           value={value}
           onChange={(e: any) => onChange(e.target.value)}
-          autoComplete="off"
+          autoComplete="on"
         />
 
         {error ? <p className="input-error-msg">{error}</p> : null}
