@@ -1,19 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { isEmail } from "validator";
-import { signIn } from "next-auth/react";
-import { Magic } from "magic-sdk";
-import "./globals.sass";
-import styles from "./page.module.sass";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Titlebar from "@/components/titlebar/Titlebar";
 import Input from "@/components/input/Input";
 import Countdown from "@/components/countdown/Countdown";
 import { UserContext } from "@/context/UserContext";
 import { magic } from "@/libs/magic";
-import { redirect, useRouter } from "next/navigation";
+import styles from "./page.module.sass";
+import "./globals.sass";
 
 export default function Home() {
   const router = useRouter();
@@ -48,8 +45,6 @@ export default function Home() {
         email,
       });
 
-      console.log({ didToken });
-
       const res = await fetch("/api/login", {
         method: "POST",
         headers: {
@@ -60,7 +55,6 @@ export default function Home() {
 
       if (res.ok) {
         const userMetadata = await magic.user.getMetadata();
-        console.log({ userMetadata });
         setUser(userMetadata);
         router.replace("/dashboard");
       } else {
