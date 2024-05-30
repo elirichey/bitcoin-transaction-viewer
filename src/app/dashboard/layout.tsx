@@ -1,8 +1,36 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-//import "./globals.sass";
+import { DM_Mono, DM_Sans } from "next/font/google";
+import "../globals.sass";
+import Header from "@/components/header/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+const DMMono = DM_Mono({
+  variable: "--font-dm-mono",
+  subsets: ["latin-ext"],
+  weight: "500",
+  display: "swap",
+});
+
+const DMMonoReg = DM_Mono({
+  variable: "--font-dm-mono-reg",
+  style: "normal",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+const DMSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin-ext"],
+  weight: "500",
+  display: "swap",
+});
+
+const DMSansReg = DM_Sans({
+  variable: "--font-dm-sans-reg",
+  subsets: ["latin-ext"],
+  weight: "400",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +43,14 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html
+      lang="en"
+      className={`${DMMono.variable} ${DMMonoReg.variable} ${DMSans.variable} ${DMSansReg.variable}`}
+    >
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

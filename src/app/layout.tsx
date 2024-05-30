@@ -8,6 +8,13 @@ const DMMono = DM_Mono({
   weight: "500",
   display: "swap",
 });
+const DMMonoReg = DM_Mono({
+  variable: "--font-dm-mono-reg",
+  style: "normal",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 const DMSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -36,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${DMMono.variable} ${DMSans.variable} ${DMSansReg.variable}`}
+      className={`${DMMono.variable} ${DMMonoReg.variable} ${DMSans.variable} ${DMSansReg.variable}`}
     >
       <body>{children}</body>
     </html>

@@ -1,0 +1,58 @@
+const data = [
+  {
+    id: 1,
+    type: "Send",
+    date: "2021-09-01",
+    tx_id: "0x1234567890",
+    amount: 0.4353509380584305,
+    balance: 2.345646464,
+    status: "Pending",
+  },
+  {
+    id: 2,
+    type: "Spend",
+    date: "2021-09-01",
+    tx_id: "0x1234567890",
+    amount: 0.4353509380584305,
+    balance: 2.345646464,
+    status: "Completed",
+  },
+  {
+    id: 3,
+    type: "Send",
+    date: "2021-09-01",
+    tx_id: "0x1234567890",
+    amount: 0.4353509380584305,
+    balance: 2.345646464,
+    status: "Completed",
+  },
+  {
+    id: 4,
+    type: "Send",
+    date: "2021-09-01",
+    tx_id: "0x1234567890",
+    amount: 0.4353509380584305,
+    balance: 2.345646464,
+    status: "Pending",
+  },
+  {
+    id: 5,
+    type: "Spend",
+    date: "2021-09-01",
+    tx_id: "0x1234567890",
+    amount: 0.5353509380584305,
+    balance: 2.345646464,
+    status: "Completed",
+  },
+  {
+    id: 6,
+    type: "Receive",
+    date: "2021-09-01",
+    tx_id: "0x1234567890",
+    amount: 1.4353509380584305,
+    balance: 2.345646464,
+    status: "Completed",
+  },
+];
+
+export default data;

@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@magic-ext/bitcoin": "^23.0.2",
     "@mempool/mempool.js": "^2.3.0",
     "magic-sdk": "^28.0.3",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-table": "^7.8.0",
     "recharts": "^2.12.7",
     "validator": "^13.12.0"
   },
@@ -21,6 +23,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-table": "^7.7.20",
     "@types/validator": "^13.11.10",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",

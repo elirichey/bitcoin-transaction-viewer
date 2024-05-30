@@ -1,0 +1,127 @@
+@import '../../styles/variables'
+
+.dashboard-table
+  display: flex
+  flex-direction: column
+  background-color: $white
+  overflow: scroll
+  thead
+    flex: 1
+    display: flex
+    background-color: $white
+    width: 100%
+    th
+      display: flex
+      align-items: flex-start
+      font-family: var(--font-dm-mono)
+      font-size: 18px
+      line-height: 21.6px
+      text-transform: uppercase
+      color: $dk_teal
+    tr
+      flex: 1
+      display: flex
+      align-items: center
+      height: 42px
+
+    th
+      span
+        height: 11px
+        align-items: center
+        justify-content: center
+        letter-spacing: 0px
+        .sort
+          margin-left: 5px
+        &.desc
+          display: inline-block
+          transform: rotate(270deg)
+          color: $white
+        &.asc
+          display: inline-block
+          transform: rotate(90deg)
+          color: $white
+    .type
+      width: 160px
+      padding: 0px 20px
+    .date
+      width: 210px
+      padding: 0px 20px
+    .txid, .t-x-i-d
+      width: 276px
+      padding: 0px 20px
+    .amount
+      width: 210px
+      padding: 0px 20px
+    .balance
+      width: 210px
+      padding: 0px 20px
+    .status
+      width: 186px
+      padding: 0px 20px
+
+  tbody
+    flex: 1
+    display: flex
+    flex-direction: column
+    width: 100%
+    tr
+      flex: 1
+      display: flex
+      cursor: pointer
+      &:hover
+        background-color: $hover_teal
+    .type
+      width: 160px
+      padding: 0px 10px
+    .date
+      width: 210px
+      padding: 0px 10px
+    .txid, .t-x-i-d
+      width: 276px
+      padding: 0px 10px
+    .amount
+      width: 210px
+      padding: 0px 10px
+    .balance
+      width: 210px
+      padding: 0px 10px
+    .status
+      width: 186px
+      padding: 0px 10px
+      text-transform: uppercase
+      &.pending
+        color: $gold
+      &.completed
+        color: $green
+    td
+      display: flex
+      align-items: center
+      font-family: var(--font-dm-mono-reg)
+      color: $lt_teal
+      font-size: 14px
+      min-height: 51px
+      span
+        display: flex
+        align-items: center
+  //.even
+  //  background-color: $white
+  //.odd
+  //  background-color: $off_white
+
+.no-table-items
+  display: flex
+  flex-direction: column
+  align-items: center
+  height: 320px
+  p
+    font-size: 23px
+    color: $teal
+
+@media (max-width: 1236px)
+  .dashboard-table
+    thead
+      width: 100%
+      min-width: fit-content
+    tbody
+      width: 100%
+      min-width: fit-content

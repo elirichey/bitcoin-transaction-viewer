@@ -33,8 +33,8 @@ export default function Home() {
   return (
     <main>
       {showAuthForm ? (
-        <section id="auth-container" className={styles.auth_container}>
-          <div id="auth-stepper" className={styles.stepper_container}>
+        <section id="form-container" className={styles.form_container}>
+          <div id="form-stepper" className={styles.stepper_container}>
             {currentStep === 0 ? (
               <></>
             ) : (
@@ -78,15 +78,15 @@ export default function Home() {
             </button>
           </div>
 
-          <div id="auth-titlebar">
+          <div id="form-titlebar">
             <Titlebar title="LOG IN TO YOUR ACCOUNT" />
           </div>
 
-          <div id="auth-body" className={styles.row}>
+          <div id="form-body" className={styles.row}>
             <div className={styles.br_2}>
               {currentStep === 0 ? (
                 <div className="flex1 column mx-24 my-26">
-                  <p className={styles.auth_intro}>
+                  <p className={styles.form_intro}>
                     Enter your Anchorwatch registered email
                   </p>
 
@@ -105,8 +105,8 @@ export default function Home() {
                     }
                   />
 
-                  <div className={styles.auth_actions}>
-                    <a href="#" className={styles.auth_help}>
+                  <div className={styles.form_actions}>
+                    <a href="#" className={styles.form_help}>
                       Need Help?
                       <Image
                         src="/svg/share.svg"
@@ -118,7 +118,7 @@ export default function Home() {
                     </a>
 
                     <button
-                      className={styles.auth_btn}
+                      className={styles.form_btn}
                       onClick={() => setCurrentStep(1)}
                       disabled={!emailComplete}
                     >
@@ -128,15 +128,15 @@ export default function Home() {
                 </div>
               ) : (
                 <div className="flex1 column mx-24 my-26">
-                  <p className={styles.auth_intro}>
+                  <p className={styles.form_intro}>
                     Check your inbox for a sign in link, which is valid for 10
                     minutes. If you didn't receive it within 30 seconds, please
                     resend to receive another link.
                   </p>
 
-                  <div className={styles.auth_final_actions}>
+                  <div className={styles.form_final_actions}>
                     <button
-                      className={styles.auth_btn}
+                      className={styles.form_btn}
                       onClick={() => resendVerification()}
                       disabled={timeout !== 0}
                     >
@@ -150,7 +150,7 @@ export default function Home() {
             </div>
 
             <div className="flex1 column">
-              <div className={styles.auth_image}>
+              <div className={styles.form_image}>
                 <Image
                   src={
                     currentStep === 0 ? "/svg/auth-1.svg" : "/svg/auth-2.svg"

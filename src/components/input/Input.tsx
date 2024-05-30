@@ -7,11 +7,21 @@ interface Props {
   label: string;
   error?: null | string;
   isComplete?: boolean;
+  subtext?: null | string;
 }
 
 export default function Input(props: Props) {
-  const { name, value, onChange, type, placeholder, label, error, isComplete } =
-    props;
+  const {
+    name,
+    value,
+    onChange,
+    type,
+    placeholder,
+    label,
+    error,
+    isComplete,
+    subtext,
+  } = props;
 
   const hasError = error && error.trim().length > 0;
 
@@ -39,6 +49,7 @@ export default function Input(props: Props) {
         />
 
         {error ? <p className="input-error-msg">{error}</p> : null}
+        {subtext ? <p className="input-subtext">{subtext}</p> : null}
       </div>
     </div>
   );
