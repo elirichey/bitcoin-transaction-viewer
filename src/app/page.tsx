@@ -47,16 +47,21 @@ export default function Home() {
         headers: {
           "Content-type": "application/json",
           Authorization: `Bearer ${didToken}`,
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST",
+          "Access-Control-Allow-Headers": "Authorization, Content-Type",
         },
       });
 
-      console.log({ res });
+      console.log({ response: res });
 
       if (res.ok) {
         const userMetadata = await magic.user.getMetadata();
         console.log({ userMetadata });
         setUser(userMetadata);
         redirect("/dashboard");
+      } else {
+        console.error({ responseError: res });
       }
     } catch (error) {
       console.error({ error });
