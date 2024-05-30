@@ -10,6 +10,7 @@
 #bitcoin-sidebar
   flex-direction: column
   width: 100%
+  min-width: 420px
   max-width: 420px
   min-height: calc(100vh - 83px - 86px) // 83 = logo bar, 86 = addresses bar
   background-color: $off_white
@@ -44,12 +45,11 @@
       margin: 16px 0 15px
       img
         margin-right: 20px
-      //&:hover
-      //  background-color: $lt_gray_hover
 
 #bitcoin-stats
   flex: 1
   flex-direction: column
+  background-color: $white
   .void-bar
     width: 100%
     background-color: $lt_gray
@@ -97,6 +97,12 @@
         cursor: pointer
         &:hover
           filter: opacity(0.5)
+  .table-container
+    display: flex
+    flex-direction: column
+    width: 100%
+    max-width: calc(100vw - 420px - 33px) // 420 = sidebar, 33 = padding
+    overflow-x: scroll
 
 /* Mobile */
 

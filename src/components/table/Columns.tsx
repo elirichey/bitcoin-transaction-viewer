@@ -3,32 +3,32 @@ import Image from "next/image";
 interface Record {
   type: string;
   date: string;
-  tx_id: string;
+  label: string;
   amount: string;
   balance: string;
   status: string;
 }
 
 const accessorType = (props: Record) => {
-  const { type } = props;
-  return <span className="type">{type}</span>;
+  return <span className="type">{props.type}</span>;
 };
+
 const accessorDate = (props: Record) => {
-  const { date } = props;
-  return <span className="date">{date}</span>;
+  return <span className="date">{props.date}</span>;
 };
-const accessorTxID = (props: Record) => {
-  const { tx_id } = props;
-  return <span className="txid">{tx_id}</span>;
+
+const accessorLabel = (props: Record) => {
+  return <span className="label">{props.label}</span>;
 };
+
 const accessorAmount = (props: Record) => {
-  const { amount } = props;
-  return <span className="amount">{amount}</span>;
+  return <span className="amount">{props.amount}</span>;
 };
+
 const accessorBalance = (props: Record) => {
-  const { balance } = props;
-  return <span className="balance">{balance}</span>;
+  return <span className="balance">{props.balance}</span>;
 };
+
 const accessorStatus = (props: Record) => {
   const { status } = props;
   const isCompleted = status.toLowerCase() === "completed";
@@ -49,8 +49,8 @@ const Columns = [
     Cell: (props: any) => props.value,
   },
   {
-    Header: "TXID",
-    accessor: (props: Record) => accessorTxID(props),
+    Header: "Label",
+    accessor: (props: Record) => accessorLabel(props),
     Cell: (props: any) => props.value,
   },
   {

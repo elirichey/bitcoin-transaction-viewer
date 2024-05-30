@@ -3,18 +3,20 @@ import Titlebar from "../titlebar/Titlebar";
 import Table from "../table/Table";
 import Columns from "../table/Columns";
 import data from "../table/TestData";
+import EmptyList from "../empty-list/EmptyList";
 
 interface Props {
+  id: string | null;
   addBitcoinAddress: () => void;
 }
 
 export default function BitcoinBody(props: Props) {
-  const { addBitcoinAddress } = props;
+  const { id, addBitcoinAddress } = props;
 
   const actions = {
     // clickCell: () => console.log("Clicked Cell"),
     clickRow: (x: any) => {
-      console.log({ selected: x });
+      alert(JSON.stringify(x));
     },
   };
 
@@ -69,6 +71,14 @@ export default function BitcoinBody(props: Props) {
               </ul>
             </div>
             {/* Table */}
+
+            <div className="table-container">
+              {!id || [].length === 0 ? (
+                <EmptyList id={0} title="Add a BTC address to see holdings" />
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
 
           <div className="overview-section">
@@ -93,11 +103,17 @@ export default function BitcoinBody(props: Props) {
 
             <Table
               id="transactions-table"
-              data={data}
+              data={id ? data : []}
               columns={Columns}
               loading={false}
               actions={actions}
             />
+
+            {!id || data.length === 0 ? (
+              <EmptyList id={1} title="No transactions to show" />
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>

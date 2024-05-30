@@ -25,28 +25,27 @@
       height: 42px
 
     th
+      img
+        max-height: 20px
+        max-width: 10px
+        margin-top: 4px
+        margin-left: 8px
       span
-        height: 11px
         align-items: center
         justify-content: center
-        letter-spacing: 0px
         .sort
           margin-left: 5px
         &.desc
           display: inline-block
-          transform: rotate(270deg)
-          color: $white
         &.asc
           display: inline-block
-          transform: rotate(90deg)
-          color: $white
     .type
       width: 160px
       padding: 0px 20px
     .date
       width: 210px
       padding: 0px 20px
-    .txid, .t-x-i-d
+    .label
       width: 276px
       padding: 0px 20px
     .amount
@@ -76,7 +75,7 @@
     .date
       width: 210px
       padding: 0px 10px
-    .txid, .t-x-i-d
+    .label
       width: 276px
       padding: 0px 10px
     .amount
@@ -103,10 +102,6 @@
       span
         display: flex
         align-items: center
-  //.even
-  //  background-color: $white
-  //.odd
-  //  background-color: $off_white
 
 .no-table-items
   display: flex
