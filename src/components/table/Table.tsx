@@ -11,9 +11,9 @@ export default function Table(props: any) {
     <div className="table-container">
       <table id={id} {...getTableProps()} className="dashboard-table">
         <thead>
-          {headerGroups.map((headerGroup: any) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column: any) => {
+          {headerGroups.map((headerGroup: any, x: number) => (
+            <tr {...headerGroup.getHeaderGroupProps()} key={x}>
+              {headerGroup.headers.map((column: any, y: number) => {
                 const { id } = column;
                 const className = id
                   .split("")
@@ -28,17 +28,20 @@ export default function Table(props: any) {
                   <th
                     className={className}
                     {...column.getHeaderProps(column.getSortByToggleProps())}
+                    key={y}
                   >
                     {column.render("Header")}
-                    {column.isSorted ? (
+                    {/*{console.log({ test: column })}*/}
+                    {column?.isSorted ? (
                       <Image
                         src="/svg/up-down.svg"
                         alt="Arrow Down"
                         width={10}
                         height={10}
+                        key={y}
                       />
                     ) : (
-                      <span className="sort" />
+                      <span className="sort" key={y} />
                     )}
                   </th>
                 );
@@ -61,7 +64,7 @@ export default function Table(props: any) {
                 }
                 key={i}
               >
-                {row.cells.map((cell: any) => {
+                {row.cells.map((cell: any, q: number) => {
                   const string = cell.column.Header.toLowerCase();
                   const className = string.split(" ").join("-");
                   const cellProps = { ...cell.getCellProps() };
@@ -79,6 +82,7 @@ export default function Table(props: any) {
                           ? () => actions.clickCell(row.original)
                           : null
                       }
+                      key={q}
                     >
                       {cell.render("Cell")}
                     </td>
