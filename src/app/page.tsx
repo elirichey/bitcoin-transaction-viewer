@@ -53,8 +53,6 @@ export default function Home() {
         },
       });
 
-      console.log({ response: res });
-
       if (res.ok) {
         const userMetadata = await magic.user.getMetadata();
         console.log({ userMetadata });
@@ -69,7 +67,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-    console.log({ user });
     user?.issuer && redirect("/dashboard");
   }, [user]);
 

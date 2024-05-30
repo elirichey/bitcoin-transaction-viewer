@@ -3,7 +3,6 @@ import { Magic } from "@magic-sdk/admin";
 let mAdmin = new Magic(process.env.MAGIC_SECRET_KEY);
 
 export default async function login(req: any, res: any) {
-  alert("HIT");
   try {
     const didToken = mAdmin.utils.parseAuthorizationHeader(
       req?.headers?.authorization
