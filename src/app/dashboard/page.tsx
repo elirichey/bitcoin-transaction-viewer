@@ -26,14 +26,14 @@ export default function Dashboard() {
     setShowAddNewBitcoinAddress(true);
   }
 
-  function logout() {
-    magic.user.logout().then(() => {
-      setUser({ user: null });
-      redirect("/login");
-    });
-  }
+  //function logout() {
+  //  magic.user.logout().then(() => {
+  //    setUser({ user: null });
+  //    redirect("/login");
+  //  });
+  //}
 
-  if (!user?.issuer) return logout();
+  //if (!user?.issuer) return logout();
 
   const loading = user?.loading;
   return (
