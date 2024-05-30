@@ -68,7 +68,6 @@ export default function Table(props: any) {
                   const string = cell.column.Header.toLowerCase();
                   const className = string.split(" ").join("-");
                   const cellProps = { ...cell.getCellProps() };
-
                   const activeCol = string === "active";
 
                   return (

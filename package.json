@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@magic-ext/bitcoin": "^23.0.2",
+    "@magic-sdk/admin": "^2.4.1",
     "@mempool/mempool.js": "^2.3.0",
     "magic-sdk": "^28.0.3",
     "next": "14.2.3",
