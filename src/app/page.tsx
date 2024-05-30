@@ -47,9 +47,6 @@ export default function Home() {
         headers: {
           "Content-type": "application/json",
           Authorization: `Bearer ${didToken}`,
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST",
-          "Access-Control-Allow-Headers": "Authorization, Content-Type",
         },
       });
 
